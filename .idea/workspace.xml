@@ -6,44 +6,47 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:ecommerce" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
     </expand>
     <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:ecommerce" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:ecommerce/begin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:begin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc1e51f7-f414-47ff-8c1e-55a4b4040d00" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/ecommerce_store.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="fc1e51f7-f414-47ff-8c1e-55a4b4040d00" name="Default Changelist" comment="install packages">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
   <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="dashboard" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="begin" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -156,6 +159,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1j9cOxod0doB6k900dVsmUPoQUC" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -167,6 +171,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -184,6 +189,7 @@
       <option name="presentableId" value="Default" />
       <updated>1603219719829</updated>
       <workItem from="1603219720987" duration="620000" />
+      <workItem from="1604062211338" duration="1235000" />
     </task>
     <task id="LOCAL-00001" summary="install packages">
       <created>1603219990430</created>
@@ -209,7 +215,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="ecommerce/begin" />
+                        <option value="begin" />
                       </list>
                     </value>
                   </entry>
@@ -220,8 +226,12 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
     <MESSAGE value="add external assets" />
     <MESSAGE value="install packages" />
     <option name="LAST_COMMIT_MESSAGE" value="install packages" />
@@ -231,18 +241,26 @@
       <screen x="1920" y="28" width="1920" height="1050" />
     </state>
     <state x="2334" y="207" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.30.1920.1050/1920.28.1920.1050@1920.28.1920.1050" timestamp="1603220245330" />
-    <state x="2472" y="285" key="Vcs.Push.Dialog.v2" timestamp="1603220316515">
+    <state x="2381" y="197" key="SettingsEditor" timestamp="1604062829656">
       <screen x="1920" y="28" width="1920" height="1050" />
     </state>
-    <state x="2472" y="285" key="Vcs.Push.Dialog.v2/0.30.1920.1050/1920.28.1920.1050@1920.28.1920.1050" timestamp="1603220316515" />
+    <state x="2381" y="197" key="SettingsEditor/0.30.1920.1050/1920.28.1920.1050@1920.28.1920.1050" timestamp="1604062829656" />
+    <state x="2472" y="285" key="Vcs.Push.Dialog.v2" timestamp="1604063436621">
+      <screen x="1920" y="28" width="1920" height="1050" />
+    </state>
+    <state x="2472" y="285" key="Vcs.Push.Dialog.v2/0.30.1920.1050/1920.28.1920.1050@1920.28.1920.1050" timestamp="1604063436621" />
     <state x="2712" y="286" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1603219907307">
       <screen x="1920" y="28" width="1920" height="1050" />
     </state>
     <state x="2712" y="286" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.30.1920.1050/1920.28.1920.1050@1920.28.1920.1050" timestamp="1603219907307" />
-    <state x="2630" y="454" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1603219846222">
+    <state x="2630" y="454" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1604062868444">
       <screen x="1920" y="28" width="1920" height="1050" />
     </state>
-    <state x="2630" y="454" key="git4idea.remote.GitConfigureRemotesDialog/0.30.1920.1050/1920.28.1920.1050@1920.28.1920.1050" timestamp="1603219846222" />
+    <state x="2630" y="454" key="git4idea.remote.GitConfigureRemotesDialog/0.30.1920.1050/1920.28.1920.1050@1920.28.1920.1050" timestamp="1604062868444" />
+    <state x="2688" y="447" key="git4idea.ui.GitResetDialog" timestamp="1604062529584">
+      <screen x="1920" y="28" width="1920" height="1050" />
+    </state>
+    <state x="2688" y="447" key="git4idea.ui.GitResetDialog/0.30.1920.1050/1920.28.1920.1050@1920.28.1920.1050" timestamp="1604062529584" />
     <state x="2710" y="343" key="svn.repositoryBrowser" timestamp="1603220080282">
       <screen x="1920" y="28" width="1920" height="1050" />
     </state>

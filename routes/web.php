@@ -13,4 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('testLayout', function () {
+    return view('layouts.admin');
+});
