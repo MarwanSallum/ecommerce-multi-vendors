@@ -93,7 +93,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware('web')
              ->namespace($this->namespace)
-             ->prefix('admin')
+            //  ->prefix('admin') // لا تعمل مع Laravel Localization
              ->group(base_path('routes/admin.php'));
     }
 

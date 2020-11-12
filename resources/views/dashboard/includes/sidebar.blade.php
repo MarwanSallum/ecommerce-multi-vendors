@@ -88,12 +88,11 @@
                 <ul class="menu-content">
                     <li><a class="menu-item" href="#" data-i18n="nav.templates.vert.main">وسائل التوصيل</a>
                         <ul class="menu-content">
-                            <li><a class="menu-item" href="../vertical-menu-template"
-                                   data-i18n="nav.templates.vert.classic_menu">توصيل مجاني</a>
+                        <li><a class="menu-item" href="{{route('edit.shipping.methods','free')}}"
+                                   data-i18n="nav.templates.vert.classic_menu">توصيل مجاني</a> </li>
+                            <li><a class="menu-item" href="{{route('edit.shipping.methods','local')}}">توصيل داخلي</a>
                             </li>
-                            <li><a class="menu-item" href="../vertical-modern-menu-template">توصيل داخلي</a>
-                            </li>
-                            <li><a class="menu-item" href="../vertical-compact-menu-template"
+                            <li><a class="menu-item" href="{{route('edit.shipping.methods','outer')}}"
                                    data-i18n="nav.templates.vert.compact_menu">توصيل خارجي</a>
                             </li>
                         </ul>
