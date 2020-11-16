@@ -4,22 +4,6 @@
 
     <div class="app-content content">
         <div class="content-wrapper">
-            <div class="content-header row">
-                <div class="content-header-left col-md-6 col-12 mb-2">
-                    <div class="row breadcrumbs-top">
-                        <div class="breadcrumb-wrapper col-12">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="">الرئيسية </a>
-                                </li>
-                                <li class="breadcrumb-item"><a href=""> الاقسام الرئيسية </a>
-                                </li>
-                                <li class="breadcrumb-item active">تعديل 
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="content-body">
                 <!-- Basic form layout section start -->
                 <section id="basic-form-layouts">
@@ -39,65 +23,47 @@
                                         </ul>
                                     </div>
                                 </div>
-                                @include('admin.includes.alerts.success')
-                                @include('admin.includes.alerts.errors')
+                                @include('dashboard.includes.alerts.success')
+                                @include('dashboard.includes.alerts.errors')
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                    <form class="form" action="{{route('upsate.shipping.methods',$shippingMethod -> id)}}"
-                                            method="PUT"
+                                    <form class="form" action="{{route('update.shipping.methods',$shippingMethod -> id)}}"
+                                            method="POST"
                                             enctype="multipart/form-data">
                                             @csrf
+                                            @method('PUT')
                                             <input name="id" value="{{$shippingMethod -> id}}" type="hidden">
 
                                             <div class="form-body">
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
-                                                                    <label for="projectinput1">اسم</label>
+                                                                <label for="projectinput1">{{__('admin/shippings.shipping_name')}}</label>
                                                                 <input type="text" id="name" value="{{$shippingMethod -> value}}"
                                                                         class="form-control"
                                                                         placeholder=""
-                                                                        name="category[0][name]">
-                                                                    @error("category.0.name")
-                                                                    <span class="text-danger"> هذا الحقل مطلوب</span>
+                                                                        name="value">
+                                                                    @error("value")
+                                                                <span class="text-danger">{{$message}}</span>
                                                                     @enderror
                                                                 </div>
                                                             </div>
 
 
-                                                            <div class="col-md-6 hidden">
-                                                                <div class="form-group">
-                                                                    <label for="projectinput1"> أختصار اللغة  </label>
-                                                                    <input type="text" id="abbr"
-                                                                        class="form-control"
-                                                                        placeholder="  "
-                                                                        value=""
-                                                                        name="category[0][abbr]">
-
-                                                                    @error("category.0.abbr")
-                                                                    <span class="text-danger"> هذا الحقل مطلوب</span>
-                                                                    @enderror
-                                                                </div>
-                                                            </div>
-
-
-                                                        </div>
-                                                        <div class="row">
                                                             <div class="col-md-6">
-                                                                <div class="form-group mt-1">
-                                                                    <input type="checkbox" value="1"
-                                                                        name="category[0][active]"
-                                                                        id="switcheryColor4"
-                                                                        class="switchery" data-color="success"
-                                                                        @if ($mainCategory -> active == 1)checked @endif/>
-                                                                    <label for="switcheryColor4"
-                                                                        class="card-title ml-1">الحالة   </label>
-
-                                                                    @error("category.0.active")
-                                                                    <span class="text-danger"> </span>
+                                                                <div class="form-group">
+                                                                    <label for="projectinput1">{{__('admin/shippings.shipping_cost')}}</label>
+                                                                <input type="number" id="plain_value" value="{{$shippingMethod -> plain_value}}"
+                                                                        class="form-control"
+                                                                        placeholder=""
+                                                                        name="plain_value">
+                                                                    @error("plain_value")
+                                                                    <span class="text-danger">{{$message}}</span>
                                                                     @enderror
                                                                 </div>
                                                             </div>
+
+
                                                         </div>
                                             </div>
 
@@ -105,119 +71,13 @@
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1"
                                                         onclick="history.back();">
-                                                    <i class="ft-x"></i> تراجع
+                                                    <i class="ft-x"></i>{{__('admin/bottons.back')}}
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
-                                                    <i class="la la-check-square-o"></i> تحديث
+                                                    <i class="la la-check-square-o"></i>{{__('admin/bottons.update')}}
                                                 </button>
                                             </div>
                                         </form>
-
-
-                                        <ul class="nav nav-tabs">
-                                            @isset()
-                                                @foreach()
-                                                    <li class="nav-item">
-                                                        <a class="nav-link @if($index ==  0) active @endif  " id="homeLable-tab"  data-toggle="tab"
-                                                        href="#homeLable{{$index}}" aria-controls="homeLable"
-                                                            aria-expanded="{{$index ==  0 ? 'true' : 'false'}}">
-                                                            </a>
-                                                    </li>
-                                                @endforeach
-                                            @endisset
-                                        </ul>
-                                        <div class="tab-content px-1 pt-1">
-
-                                            @isset()
-                                                @foreach()
-
-                                                <div role="tabpanel" class="tab-pane  @if($index ==  0) active  @endif  " id="homeLable{{$index}}"
-                                                aria-labelledby="homeLable-tab"
-                                                aria-expanded="{{$index ==  0 ? 'true' : 'false'}}">
-
-                                                <form class="form"
-                                                    action=""
-                                                    method="POST"
-                                                    enctype="multipart/form-data">
-                                                    @csrf
-
-                                                    <input name="id" value="" type="hidden">
-
-
-                                                    <div class="form-body">
-
-                                                        <h4 class="form-section"><i class="ft-home"></i> بيانات القسم </h4>
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="form-group">
-                                                                    <label for="projectinput1"> اسم القسم
-                                                                        -  </label>
-                                                                    <input type="text" id="name"
-                                                                        class="form-control"
-                                                                        placeholder="  "
-                                                                        value=""
-                                                                        name="category[0][name]">
-                                                                    @error("category.0.name")
-                                                                    <span class="text-danger"> هذا الحقل مطلوب</span>
-                                                                    @enderror
-                                                                </div>
-                                                            </div>
-
-
-                                                            <div class="col-md-6 hidden">
-                                                                <div class="form-group">
-                                                                    <label for="projectinput1"> أختصار
-                                                                        اللغة  </label>
-                                                                    <input type="text" id="abbr"
-                                                                        class="form-control"
-                                                                        placeholder="  "
-                                                                        value=""
-                                                                        name="category[0][abbr]">
-
-                                                                    @error("category.0.abbr")
-                                                                    <span class="text-danger"> هذا الحقل مطلوب</span>
-                                                                    @enderror
-                                                                </div>
-                                                            </div>
-
-
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group mt-1">
-                                                                    <input type="checkbox" value="1"
-                                                                        name="category[0][active]"
-                                                                        id="switcheryColor4"
-                                                                        class="switchery" data-color="success"
-                                                                        @if($translation -> active == 1)checked @endif/>
-                                                                    <label for="switcheryColor4"
-                                                                        class="card-title ml-1">الحالة  </label>
-
-                                                                    @error("category.0.active")
-                                                                    <span class="text-danger"> </span>
-                                                                    @enderror
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="form-actions">
-                                                        <button type="button" class="btn btn-warning mr-1"
-                                                                onclick="history.back();">
-                                                            <i class="ft-x"></i> تراجع
-                                                        </button>
-                                                        <button type="submit" class="btn btn-primary">
-                                                            <i class="la la-check-square-o"></i> تحديث
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
-
-                                                @endforeach
-                                            @endisset
-
-                                        </div>
                                     </div>
                                 </div>
                             </div>

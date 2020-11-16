@@ -37,7 +37,7 @@ Route::group([
             // Setting Route
             Route::group(['prefix' => 'settings'], function () {
                 Route::get('shipping-methods/{type}' , 'SettingsController@editShippingMethods')->name('edit.shipping.methods');
-                Route::put('shipping-methods/{id}' , 'SettingsController@updateShippingMethods')->name('upsate.shipping.methods');
+                Route::put('shipping-methods/{id}' , 'SettingsController@updateShippingMethods')->name('update.shipping.methods');
             });
         });
         
