@@ -9,7 +9,7 @@ class Category extends Model
 {
     use Translatable;
 
-    
+    // هنا البكيج بتربط من خلال حقل الإسم من جدول الترجمة بشكل تلقائي
     protected $translatedAttributes = ['name'];
 
     protected $with = ['translations'];
