@@ -16,6 +16,8 @@ class Category extends Model
 
     protected $fillable = ['parent_id', 'slug', 'is_active'];
 
+    // تم إخفاء الترجمات من داخل المودل ويمكن إستدعائها من خلال الكونترولر بإستخدام 
+    // makeVisible(['translations']);
     protected $hidden =['translations'];
 
     protected $casts =[
