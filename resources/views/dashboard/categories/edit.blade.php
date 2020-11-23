@@ -19,38 +19,52 @@
                   <br>
                   <br>
 
-              <form class="form">
+              <form class="form" 
+                    action="{{route('admin.main_categories.update', $category ->id)}}"
+                    method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+
+                    <input type="hidden" name="id" value="{{$category ->id}}">
                   <div class="row">
 
                         <div class="form-group col-md-6 mb-2">
-                        <input type="text" class="form-control" placeholder="{{__('admin/category.category_name')}}" name="name">
+                        <input value="{{$category ->name}}"
+                            type="text" class="form-control" 
+                            placeholder="{{__('admin/category.category_name')}}"
+                            name="name">
+                            @error("name")
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                         </div>
 
                         <div class="form-group col-md-6 mb-2">
-                            <input type="text" class="form-control" placeholder="{{__('admin/category.category_name_url')}}" name="company">
+                            <input value="{{$category ->slug}}"
+                                type="text" class="form-control" 
+                                placeholder="{{__('admin/category.category_name_url')}}"
+                                name="slug">
+                                @error("slug")
+                                <span class="text-danger">{{$message}}</span>
+                                @enderror
                         </div>
 
                   </div>
                   
                   <div class="row">
-
-                    
                         <div class="col-md-6">
                             <div class="form-group mt-1">
                                 <input type="checkbox" value="1"
-                                    name="category[0][active]"
+                                    name="is_active"
                                     id="switcheryColor4"
                                     class="switchery" data-color="success"
-                                   checked />
+                                   @if($category ->is_active == 1 )checked @endif />
                                 <label for="switcheryColor4"
                             class="card-title ml-1">{{__('admin\category.status')}}</label>
-
-                                @error("category.0.active")
-                                <span class="text-danger"> </span>
+                                @error("is_active")
+                                <span class="text-danger">{{$message}}</span>
                                 @enderror
                             </div>
                         </div>
-                  
 
                       <div class="form-group col-md-4 mb-2">
                                 <input type="file" class="file" id="inputGroupFile01"  >
@@ -58,6 +72,13 @@
                       </div>
 
                   </div>
+
+                  <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="la la-check-square-o"></i>
+                        {{__('admin\dashboard.botton_update')}} 
+                    </button>
+                </div>
               </form>
             </div>
           </div>

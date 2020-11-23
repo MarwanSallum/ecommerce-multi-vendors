@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MainCategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -61,7 +62,7 @@ class MainCategoriesController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
+        $category = Category::orderBy('id','DESC')->find($id); // لجلب أحدث قسم تم إضافته 
         if(!$category){
             return redirect()->route('admin.main_categories')->with(['error' => __('admin\category.category_not_exist')]);
         }
@@ -75,9 +76,30 @@ class MainCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MainCategoryRequest $request, $id)
     {
-        //
+        try{
+            if(!$request->has('is_active'))
+                $request->request->add(['is_active' => 0]);
+            else
+                $request ->request->add(['is_active' => 1]);
+
+            $category = Category::find($id);
+
+            if(!$category)
+                return redirect()->route('admin.main_categories')->with(['error' => __('admin\dashboard.error')]);
+
+            $category ->update($request->all());
+
+            // لأن الأسم موجود في جدول الترجمة يتم إضافته هنا 
+            $category ->name = $request->name;
+            $category ->save();
+
+            return redirect()->route('admin.main_categories')->with(['success' => __('admin\dashboard.success')]);
+
+        }catch(\Exception $ex){
+            return redirect()->route('admin.main_categories')->with(['error' => __('admin\dashboard.error')]);
+        }
     }
 
     /**
