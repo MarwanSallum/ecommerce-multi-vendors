@@ -61,7 +61,11 @@ class MainCategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        if(!$category){
+            return redirect()->route('admin.main_categories')->with(['error' => __('admin\category.category_not_exist')]);
+        }
+        return view('dashboard.categories.edit',compact('category'));
     }
 
     /**

@@ -16,7 +16,7 @@ return [
 
     //bottons
     'botton_delete' =>'حذف',
-    'botton_update' => 'تحديث',
+    'botton_update' => 'تعديل',
     'botton_change_password' => 'حفظ كلمة المرور الجديدة',
     'botton_back' => 'تراجع',
 
@@ -28,6 +28,8 @@ return [
     'category_image' =>'صورة القسم',
     'procedure' => 'الإجراء',
 
-    'main_categories' => 'الأقسام الرئيسية',
+
+
+
 
 ];

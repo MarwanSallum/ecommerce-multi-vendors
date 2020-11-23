@@ -11,7 +11,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                            <h3 class="card-title">{{__('admin\dashboard.main_categories')}}</h3>
+                            <h3 class="card-title">{{__('admin\category.main_categories')}}</h3>
                                 <a class="heading-elements-toggle"><i
                                         class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
@@ -53,7 +53,7 @@
                                                     <td>
                                                         <div class="btn-group" role="group"
                                                             aria-label="Basic example">
-                                                    <a href=""
+                                                    <a href="{{route('admin.main_categories.edit',$category ->id)}}"
                                                     class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">{{__('admin\dashboard.botton_update')}}</a>
 
                                                             <a href=""

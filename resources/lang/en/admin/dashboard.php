@@ -28,5 +28,4 @@ return [
     'category_image' =>'Category Image',
     'procedure' => 'Procedure',
 
-    'main_categories' => 'Main Categories'
 ];
