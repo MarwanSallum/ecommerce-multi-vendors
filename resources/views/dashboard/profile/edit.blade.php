@@ -63,7 +63,9 @@
                                                                     @enderror
                                                                 </div>
                                                             </div>
+                                                        </div>
 
+                                                        <div class="row">
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label for="projectinput1">{{__('admin\dashboard.mobile')}}</label>
@@ -76,8 +78,6 @@
                                                                     @enderror
                                                                 </div>
                                                             </div>
-
-
                                                         </div>
                                             </div>
 

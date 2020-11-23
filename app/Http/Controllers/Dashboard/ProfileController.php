@@ -20,7 +20,7 @@ class ProfileController extends Controller
         return view('dashboard.profile.edit',compact('admin'));
     }
 
-    public function updateProfile(ProfileRequest $request)
+    public function updateProfile(Request $request , Admin $admin)
     {
         try{
             $admin = Admin::find(auth('admin') -> user() -> id);
