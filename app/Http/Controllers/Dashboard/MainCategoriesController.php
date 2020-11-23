@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class MainCategoriesController extends Controller
@@ -14,7 +15,10 @@ class MainCategoriesController extends Controller
      */
     public function index()
     {
-        //
+        // parent() هي سكوب موجود في الموديل بهدف تخفيف الكود وإعادة إستخدامه
+       $categories = Category::parent() -> paginate(PAGINATION_COUNT);
+        return view('dashboard.categories.index',compact('categories'));
+
     }
 
     /**

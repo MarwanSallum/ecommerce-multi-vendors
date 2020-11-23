@@ -24,5 +24,13 @@ class Category extends Model
         'is_active' => 'boolean',
     ];
 
+    public function scopeParent($query){
+        return $query -> whereNull('parent_id');
+    }
+
+    public function getActive(){
+       return $this -> is_active == 0 ? __('admin\dashboard.not_active') : __('admin\dashboard.active');
+    }
+
 
 }
