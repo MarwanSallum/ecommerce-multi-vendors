@@ -112,6 +112,23 @@ class MainCategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+    
+            $category = Category::find($id);
+
+            if(!$category)
+
+            // TODO:: Make Trait to all redirect
+            //TODO:: Make Delete Confirmation with JS
+
+                return redirect()->route('admin.main_categories')->with(['error' => __('admin\dashboard.error')]);
+
+
+            $category ->delete();
+            return redirect()->route('admin.main_categories')->with(['success' => __('admin\dashboard.success')]);
+
+        }catch(\Exception $ex){
+            return redirect()->route('admin.main_categories')->with(['error' => __('admin\dashboard.error')]);
+        }
     }
 }

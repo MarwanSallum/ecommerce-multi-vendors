@@ -56,7 +56,7 @@
                                                     <a href="{{route('admin.main_categories.edit',$category ->id)}}"
                                                     class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">{{__('admin\dashboard.botton_update')}}</a>
 
-                                                            <a href=""
+                                                            <a onclick="return confirm('Are you sure?')"  href="{{route('admin.main_categories.delete',$category ->id)}}"
                                                             class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">{{__('admin\dashboard.botton_delete')}}</a>
                                                     
                                                         </div>
