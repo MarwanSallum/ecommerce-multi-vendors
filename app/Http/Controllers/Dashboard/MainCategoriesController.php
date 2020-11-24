@@ -90,9 +90,11 @@ class MainCategoriesController extends Controller
                 return redirect()->route('admin.main_categories')->with(['error' => __('admin\dashboard.error')]);
 
             $category ->update($request->all());
-
             // لأن الأسم موجود في جدول الترجمة يتم إضافته هنا 
             $category ->name = $request->name;
+            // تم عمل إعادة صياغة slug
+            // لتصبح تضاف بشكل تلقائي بمجرد إدخال الأسم 
+            $category->slug = str_replace(' ','-',$request->name);
             $category ->save();
 
             return redirect()->route('admin.main_categories')->with(['success' => __('admin\dashboard.success')]);

@@ -29,9 +29,9 @@
                   <div class="row">
 
                         <div class="form-group col-md-6 mb-2">
+                        <label>{{__('admin/category.category_name')}}</label>
                         <input value="{{$category ->name}}"
                             type="text" class="form-control" 
-                            placeholder="{{__('admin/category.category_name')}}"
                             name="name">
                             @error("name")
                             <span class="text-danger">{{$message}}</span>
@@ -39,13 +39,10 @@
                         </div>
 
                         <div class="form-group col-md-6 mb-2">
-                            <input value="{{$category ->slug}}"
+                          <label>{{__('admin/category.category_name_url')}}</label>
+                            <input disabled value="{{$category ->slug}}"
                                 type="text" class="form-control" 
-                                placeholder="{{__('admin/category.category_name_url')}}"
                                 name="slug">
-                                @error("slug")
-                                <span class="text-danger">{{$message}}</span>
-                                @enderror
                         </div>
 
                   </div>
