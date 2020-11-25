@@ -7,8 +7,10 @@ return [
     'mobile' => 'Mobile Number',
     
     // alert message
-    'success' => 'Successfully Updated',
+    'update' => 'Successfully Updated',
     'error' => 'Something Went Wrong, Please Try Again Later',
+    'save' => 'Successfully Saved',
+    'delete' => 'Successfully Deleted',
 
     // Active or Not
     'active' => 'Active',
@@ -17,6 +19,7 @@ return [
     //bottons
     'botton_delete' =>'Delete',
     'botton_update' => 'Update',
+    'botton_add' =>'Add',
     'botton_change_password' => 'Save New Password',
     'botton_back' => 'Back',
 

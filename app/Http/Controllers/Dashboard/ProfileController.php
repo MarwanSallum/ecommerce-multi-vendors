@@ -25,7 +25,7 @@ class ProfileController extends Controller
         try{
             $admin = Admin::find(auth('admin') -> user() -> id);
             $admin -> update($request ->only(['name','mobile']));
-            return redirect()-> back()->with(['success' => __('admin\dashboard.success')]);
+            return redirect()-> back()->with(['success' => __('admin\dashboard.update')]);
         }catch(\Exception $ex){
             return redirect()-> back()->with(['error' => __('admin\dashboard.error')]);
         }
@@ -40,7 +40,7 @@ class ProfileController extends Controller
         ]);
         try{
             Admin::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
-            return redirect()-> back()->with(['success' => __('admin\dashboard.success')]);
+            return redirect()-> back()->with(['success' => __('admin\dashboard.update')]);
         }catch(\Exception $ex){
             return redirect()-> back()->with(['error' => __('admin\dashboard.error')]);
 

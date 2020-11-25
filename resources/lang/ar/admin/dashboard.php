@@ -7,8 +7,10 @@ return [
     'mobile' => 'رقم الهاتف المحمول',
 
     // alert message
-    'success' => 'تم التحديث بنجاح',
+    'update' => 'تم التحديث بنجاح',
     'error' => 'هناك خطأ ما يرجى المحاولة في ما بعد',
+    'save' => 'تم الحفظ بنجاح',
+    'delete' => 'تم الحذف بنجاح',
 
     // Active or Not
     'active' => 'مفعل',
@@ -17,6 +19,7 @@ return [
     //bottons
     'botton_delete' =>'حذف',
     'botton_update' => 'تعديل',
+    'botton_add' =>'إضافة',
     'botton_change_password' => 'حفظ كلمة المرور الجديدة',
     'botton_back' => 'تراجع',
 

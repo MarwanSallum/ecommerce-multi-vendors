@@ -32,7 +32,7 @@
                     <li class="active"><a class="menu-item" href="{{route('admin.main_categories')}}"
                     data-i18n="nav.dash.ecommerce">{{__('admin\sidebar.show_all_categories')}}</a>
                     </li>
-              <li><a class="menu-item" href="" data-i18n="nav.dash.crypto">{{__('admin\sidebar.add_new_category')}}</a>
+              <li><a class="menu-item" href="{{route('admin.main_categories.create')}}" data-i18n="nav.dash.crypto">{{__('admin\sidebar.add_new_category')}}</a>
                     </li>
                 </ul>
             </li>
