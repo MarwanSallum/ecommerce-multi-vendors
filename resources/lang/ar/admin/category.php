@@ -2,6 +2,7 @@
 
 return [
     'main_categories' => 'الأقسام الرئيسية',
+    'sub_categories' => 'الأقسام الفرعية',
     'category_not_exist' => 'هذا القسم غير موجود',
     'category_edit' => 'تعديل القسم',
     'category_create' =>'إضافة قسم جديد',

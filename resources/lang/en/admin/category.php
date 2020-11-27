@@ -2,6 +2,7 @@
 
 return [
     'main_categories' => 'Main Categories',
+    'sub_categories' => 'Sub Categories',
     'category_not_exist' => 'This Category Not Exist',
     'category_edit' => 'Edit Category',
     'category_create' =>'Create New Category',

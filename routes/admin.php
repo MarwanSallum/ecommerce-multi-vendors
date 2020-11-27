@@ -42,13 +42,13 @@ Route::group([
             });
 
               // Profile Route
-              Route::group(['prefix' => 'profile'], function () {
+            Route::group(['prefix' => 'profile'], function () {
                 Route::get('edit' , 'ProfileController@editProfile')->name('edit.profile');
                 Route::put('update' , 'ProfileController@updateProfile')->name('update.profile');
                 Route::put('update-password' , 'ProfileController@updatePassword')->name('update.password');
             });
 
-            // Category Route
+            // Main Category Route
             Route::group(['prefix' => 'main_categories'], function () {
                 Route::get('/', 'MainCategoriesController@index')->name('admin.main_categories');
                 Route::get('create', 'MainCategoriesController@create')->name('admin.main_categories.create');
@@ -56,6 +56,16 @@ Route::group([
                 Route::get('edit/{id}', 'MainCategoriesController@edit')->name('admin.main_categories.edit');
                 Route::post('update/{id}', 'MainCategoriesController@update')->name('admin.main_categories.update');
                 Route::get('delete/{id}', 'MainCategoriesController@destroy')->name('admin.main_categories.delete');
+            });
+
+               // Sub Category Route
+            Route::group(['prefix' => 'sub_categories'], function () {
+                Route::get('/', 'SubCategoriesController@index')->name('admin.sub_categories');
+                Route::get('create', 'SubCategoriesController@create')->name('admin.sub_categories.create');
+                Route::post('store', 'SubCategoriesController@store')->name('admin.sub_categories.store');
+                Route::get('edit/{id}', 'SubCategoriesController@edit')->name('admin.sub_categories.edit');
+                Route::post('update/{id}', 'SubCategoriesController@update')->name('admin.sub_categories.update');
+                Route::get('delete/{id}', 'SubCategoriesController@destroy')->name('admin.sub_categories.delete');
             });
         });
         
