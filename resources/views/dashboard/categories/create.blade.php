@@ -5,7 +5,7 @@
       <div class="app-content content">
         <div class="content-wrapper">
           <div class="content-body">
-          <h4 class="card-title" id="file-repeater">{{__('admin\category.category_create')}} </h4>
+          <h4 class="card-title" id="file-repeater">{{__('admin\category.main_category_create')}}</h4>
           </div>
           <div class="card-content collapse show">
             <div class="card-body">

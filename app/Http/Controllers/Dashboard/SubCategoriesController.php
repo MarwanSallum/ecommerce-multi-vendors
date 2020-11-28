@@ -90,9 +90,11 @@ class SubCategoriesController extends Controller
     {
         $category = Category::orderBy('id','DESC')->find($id); // لجلب أحدث قسم تم إضافته 
         if(!$category){
-            return redirect()->route('admin.main_categories')->with(['error' => __('admin\category.category_not_exist')]);
+            return redirect()->route('admin.sub_categories')->with(['error' => __('admin\category.category_not_exist')]);
         }
-        return view('dashboard.categories.edit',compact('category'));
+
+        $categories = Category::parent()->orderBy('id', 'DESC')-> get();
+        return view('dashboard.sub_categories.edit',compact('category','categories'));
     }
 
     /**
@@ -102,7 +104,7 @@ class SubCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(MainCategoryRequest $request, $id)
+    public function update(SubCategoryRequest $request, $id)
     {
         try{
             if(!$request->has('is_active'))
@@ -113,7 +115,7 @@ class SubCategoriesController extends Controller
             $category = Category::find($id);
 
             if(!$category)
-                return redirect()->route('admin.main_categories')->with(['error' => __('admin\dashboard.error')]);
+                return redirect()->route('admin.sub_categories')->with(['error' => __('admin\dashboard.error')]);
 
             $category ->update($request->all());
             // لأن الأسم موجود في جدول الترجمة يتم إضافته هنا 
@@ -123,10 +125,10 @@ class SubCategoriesController extends Controller
             $category->slug = str_replace(' ','-',$request->name);
             $category ->save();
 
-            return redirect()->route('admin.main_categories')->with(['success' => __('admin\dashboard.update')]);
+            return redirect()->route('admin.sub_categories')->with(['success' => __('admin\dashboard.update')]);
 
         }catch(\Exception $ex){
-            return redirect()->route('admin.main_categories')->with(['error' => __('admin\dashboard.error')]);
+            return redirect()->route('admin.sub_categories')->with(['error' => __('admin\dashboard.error')]);
         }
     }
 
@@ -146,13 +148,13 @@ class SubCategoriesController extends Controller
             
             //TODO:: Make Delete Confirmation with JS
 
-                return redirect()->route('admin.main_categories')->with(['error' => __('admin\dashboard.error')]);
+                return redirect()->route('admin.sub_categories')->with(['error' => __('admin\dashboard.error')]);
 
             $category ->delete();
-            return redirect()->route('admin.main_categories')->with(['success' => __('admin\dashboard.delete')]);
+            return redirect()->route('admin.sub_categories')->with(['success' => __('admin\dashboard.delete')]);
 
         }catch(\Exception $ex){
-            return redirect()->route('admin.main_categories')->with(['error' => __('admin\dashboard.error')]);
+            return redirect()->route('admin.sub_categories')->with(['error' => __('admin\dashboard.error')]);
         }
     }
 }

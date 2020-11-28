@@ -32,6 +32,10 @@ class Category extends Model
         return $query -> whereNotNull('parent_id');
     }
 
+    public function _parent(){
+        return $this ->belongsTo(self::class, 'parent_id');
+    }
+
     public function getActive(){
        return $this -> is_active == 0 ? __('admin\dashboard.not_active') : __('admin\dashboard.active');
     }

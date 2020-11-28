@@ -33,7 +33,8 @@
                                         class="table display nowrap table-striped table-bordered">
                                         <thead>
                                         <tr>
-                                            <th>{{__('admin\dashboard.name')}}</th>
+                                            <th>{{__('admin\category.sub_category')}}</th>
+                                            <th>{{__('admin\category.main_category')}}</th>
                                             <th>{{__('admin\dashboard.name_in_url')}}</th>
                                             <th>{{__('admin\dashboard.status')}}</th>
                                             <th>{{__('admin\dashboard.category_image')}}</th>
@@ -46,6 +47,7 @@
                                                 @foreach($categories as $category)
                                                 <tr>
                                                 <td>{{$category ->name}}</td>
+                                                <td>{{$category ->_parent ->name}}</td>
                                                 <td>{{$category ->slug}}</td>
                                                 <td>{{$category ->getActive()}}</td>
                                                 <td><img style="width: 60px; height:60px;" src="" ></td>

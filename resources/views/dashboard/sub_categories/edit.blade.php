@@ -5,7 +5,7 @@
       <div class="app-content content">
         <div class="content-wrapper">
           <div class="content-body">
-          <h4 class="card-title" id="file-repeater">{{__('admin\category.category_edit')}} {{' - '}} {{$category ->name}}</h4>
+          <h3 class="card-title" id="file-repeater">{{__('admin\category.sub_category_edit')}} {{'  |  '}} {{$category ->name}}</h3>
           </div>
           <div class="card-content collapse show">
             <div class="card-body">
@@ -20,12 +20,34 @@
                   <br>
 
               <form class="form" 
-                    action="{{route('admin.main_categories.update', $category ->id)}}"
+                    action="{{route('admin.sub_categories.update', $category ->id)}}"
                     method="POST"
                     enctype="multipart/form-data">
                     @csrf
 
                     <input type="hidden" name="id" value="{{$category ->id}}">
+                    <div class="row">
+                      <div class="col-md-12">
+                          <div class="form-group">
+                          <label for="projectinput2">{{__('admin\category.select_category')}}</label>
+                              <select name="parent_id" class="select2 form-control">
+                                  <optgroup label="{{__('admin\category.please_select_category')}}">
+                                      @if($categories && $categories -> count() > 0)
+                                          @foreach($categories as $mainCategory)
+                                              <option
+                                                  value="{{$mainCategory -> id }}"
+                                                   @if($mainCategory -> id == $category -> parent_id) selected @endif
+                                                    >{{$mainCategory -> name}}</option>
+                                          @endforeach
+                                      @endif
+                                  </optgroup>
+                              </select>
+                              @error('parent_id')
+                              <span class="text-danger"> {{$message}}</span>
+                              @enderror
+                          </div>
+                      </div>
+                  </div>
                   <div class="row">
 
                         <div class="form-group col-md-6 mb-2">

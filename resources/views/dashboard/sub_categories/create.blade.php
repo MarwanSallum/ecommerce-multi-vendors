@@ -5,7 +5,7 @@
       <div class="app-content content">
         <div class="content-wrapper">
           <div class="content-body">
-          <h4 class="card-title" id="file-repeater">{{__('admin\category.category_create')}} </h4>
+          <h4 class="card-title" id="file-repeater">{{__('admin\category.sub_category_create')}} </h4>
           </div>
           <div class="card-content collapse show">
             <div class="card-body">
@@ -15,14 +15,12 @@
                     enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" value="">
-
-                    <h4 class="form-section"><i class="ft-home"></i> بيانات القسم </h4>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="projectinput2"> أختر القسم </label>
+                                    <label for="projectinput2">{{__('admin\category.select_category')}}</label>
                                     <select name="parent_id" class="select2 form-control">
-                                        <optgroup label="من فضلك أختر القسم ">
+                                        <optgroup label="{{__('admin\category.please_select_category')}}">
                                             @if($categories && $categories -> count() > 0)
                                                 @foreach($categories as $category)
                                                     <option
