@@ -22,6 +22,8 @@ return [
     'botton_add' =>'إضافة',
     'botton_change_password' => 'حفظ كلمة المرور الجديدة',
     'botton_back' => 'تراجع',
+    'upload_image' => 'أرفق صورة',
+    'choose_image' => 'إختر صورة',
 
     // Table
 
