@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Models\Category;
-use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\BrandRequest;
 use App\Models\Brand;
+use App\Models\Category;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\BrandRequest;
 use Illuminate\Http\Client\Request;
+use App\Http\Controllers\Controller;
 
 class BrandsController extends Controller
 {
@@ -50,14 +51,14 @@ class BrandsController extends Controller
             else
                 $request ->request->add(['is_active' => 1]);
 
-            $filePath ='';
+            $fileName ='';
             if($request->has('photo')){
-                $filePath = uploadImage('brands', $request->photo);
+                $fileName = uploadImage('brands', $request->photo);
             }
 
             $brand = Brand::create([
                 'is_active' => $request->is_active,
-                'photo' => $filePath,
+                'photo' => $fileName,
             ]);
             
             // // لأن الأسم موجود في جدول الترجمة يتم إضافته هنا 
@@ -93,11 +94,11 @@ class BrandsController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::orderBy('id','DESC')->find($id); // لجلب أحدث قسم تم إضافته 
-        if(!$category){
-            return redirect()->route('admin.main_categories')->with(['error' => __('admin\category.category_not_exist')]);
+        $brand = Brand::find($id); // لجلب أحدث قسم تم إضافته 
+        if(!$brand){
+            return redirect()->route('admin.brands')->with(['error' => __('admin\brand.brand_not_exist')]);
         }
-        return view('dashboard.categories.edit',compact('category'));
+        return view('dashboard.brands.edit',compact('brand'));
     }
 
     /**
@@ -107,31 +108,45 @@ class BrandsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BrandRequest $request, $id)
     {
         try{
+            DB::beginTransaction();
             if(!$request->has('is_active'))
                 $request->request->add(['is_active' => 0]);
             else
                 $request ->request->add(['is_active' => 1]);
 
-            $category = Category::find($id);
+            $brand = Brand::find($id);
 
-            if(!$category)
-                return redirect()->route('admin.main_categories')->with(['error' => __('admin\dashboard.error')]);
+            $fileName ='';
+            if($request->has('photo')){
 
-            $category ->update($request->all());
+                $storgedImage = Str::after($brand->photo,'brands/');
+                $oldPhoto = public_path('assets/images/brands/'. $storgedImage);
+                unlink($oldPhoto); // delete image from public folder
+
+                $fileName = uploadImage('brands', $request->photo);
+            }
+
+            if(!$brand)
+                return redirect()->route('admin.brands')->with(['error' => __('admin\dashboard.error')]);
+
+            $brand ->update([
+                'is_active' => $request->is_active,
+                'photo' => $fileName,
+            ]);
             // لأن الأسم موجود في جدول الترجمة يتم إضافته هنا 
-            $category ->name = $request->name;
-            // تم عمل إعادة صياغة slug
-            // لتصبح تضاف بشكل تلقائي بمجرد إدخال الأسم 
-            $category->slug = str_replace(' ','-',$request->name);
-            $category ->save();
+            $brand ->name = $request->name;
+    
+            $brand ->save();
 
-            return redirect()->route('admin.main_categories')->with(['success' => __('admin\dashboard.update')]);
+            DB::commit();
+            return redirect()->route('admin.brands')->with(['success' => __('admin\dashboard.update')]);
 
         }catch(\Exception $ex){
-            return redirect()->route('admin.main_categories')->with(['error' => __('admin\dashboard.error')]);
+            DB::rollback();
+            return redirect()->route('admin.brands')->with(['error' => __('admin\dashboard.error')]);
         }
     }
 
@@ -145,19 +160,22 @@ class BrandsController extends Controller
     {
         try{
     
-            $category = Category::find($id);
+            $brand = Brand::find($id);
 
-            if(!$category)
-            
+            if(!$brand)
             //TODO:: Make Delete Confirmation with JS
+                return redirect()->route('admin.brands')->with(['error' => __('admin\dashboard.error')]);
+            
+            $storgedImage = Str::after($brand->photo,'brands/');
+            $oldPhoto = public_path('assets/images/brands/'. $storgedImage);
+            unlink($oldPhoto); // delete image from public folder
 
-                return redirect()->route('admin.main_categories')->with(['error' => __('admin\dashboard.error')]);
-
-            $category ->delete();
-            return redirect()->route('admin.main_categories')->with(['success' => __('admin\dashboard.delete')]);
+            $brand ->delete();
+            return redirect()->route('admin.brands')->with(['success' => __('admin\dashboard.delete')]);
 
         }catch(\Exception $ex){
-            return redirect()->route('admin.main_categories')->with(['error' => __('admin\dashboard.error')]);
+            return $ex;
+            return redirect()->route('admin.brands')->with(['error' => __('admin\dashboard.error')]);
         }
     }
 }

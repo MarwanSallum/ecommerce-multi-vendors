@@ -51,6 +51,6 @@ class Brand extends Model
 
 
     public function  getPhotoAttribute($val){
-        return ($val !== null) ? asset('assets/' . $val) : "";
+        return ($val !== null) ? asset('assets/images/brands/' . $val) : "";
     }
 }
