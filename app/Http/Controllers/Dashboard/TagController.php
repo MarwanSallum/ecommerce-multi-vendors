@@ -77,7 +77,7 @@ class TagController extends Controller
             $tag = Tag::find($id);
             if(!$tag)
             return redirect()->route('admin.tags')->with(['error' => __('admin\dashboard.error')]);
-            
+            $tag ->deleteTranslations();
             $tag ->delete();
             return redirect()->route('admin.tags')->with(['success' => __('admin\dashboard.delete')]);
 
