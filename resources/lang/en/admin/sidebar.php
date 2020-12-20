@@ -13,6 +13,14 @@ return [
     'show_all_brands' =>'Show All Brands',
     'add_new_brand' => 'Add New Brand',
 
+    // Tags
+
+    'tags' => 'Tags',
+    'all_tags' => 'All Tags',
+    'add_new_tag' => 'Add New Tag',
+
+
+
     //Setting
     'settings' => 'Settings',
     'shipping_methods' => 'Shipping Methods',

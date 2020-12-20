@@ -67,7 +67,7 @@ Route::group([
                 Route::post('update/{id}', 'SubCategoriesController@update')->name('admin.sub_categories.update');
                 Route::get('delete/{id}', 'SubCategoriesController@destroy')->name('admin.sub_categories.delete');
             });
-
+            
                 // Brand Route
                 Route::group(['prefix' => 'brands'], function () {
                 Route::get('/', 'BrandsController@index')->name('admin.brands');
@@ -77,6 +77,16 @@ Route::group([
                 Route::post('update/{id}', 'BrandsController@update')->name('admin.brand.update');
                 Route::get('delete/{id}', 'BrandsController@destroy')->name('admin.brand.delete');
             });
+                // Tag Route
+                Route::group(['prefix' => 'tags'], function () {
+                Route::get('/', 'TagController@index')->name('admin.tags');
+                Route::get('create', 'TagController@create')->name('admin.tags.create');
+                Route::post('store', 'TagController@store')->name('admin.tags.store');
+                Route::get('edit/{id}', 'TagController@edit')->name('admin.tags.edit');
+                Route::post('update/{id}', 'TagController@update')->name('admin.tags.update');
+                Route::get('delete/{id}', 'TagController@destroy')->name('admin.tags.delete');
+            });
+           
         });
         
     
