@@ -36,20 +36,6 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item"><a href=""><i class="la la-male"></i>
-            <span class="menu-title" data-i18n="nav.dash.main">{{__('admin\sidebar.sub_categories')}}</span>
-                    <span
-            class="badge badge badge-success badge-pill float-right mr-2"></span>
-                </a>
-                <ul class="menu-content">
-                <li class="active"><a class="menu-item" href="{{route('admin.sub_categories')}}"
-                                          data-i18n="nav.dash.ecommerce">{{__('admin\sidebar.show_all_categories')}}</a>
-                    </li>
-              <li><a class="menu-item" href="{{route('admin.sub_categories.create')}}" data-i18n="nav.dash.crypto">{{__('admin\sidebar.add_new_category')}}</a>
-                    </li>
-                </ul>
-            </li>
-
 
             <li class="nav-item"><a href=""><i class="la la-male"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">الطلاب  </span>
