@@ -26,6 +26,7 @@ return [
     // Table
 
     'name' => 'الإسم',
+    'category_name' => 'إسم القسم',
     'name_in_url' => 'الإسم في الرابط',
     'status' => 'الحالة',
     'category_image' =>'صورة القسم',

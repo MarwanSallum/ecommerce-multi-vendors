@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Models\Category;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MainCategoryRequest;
@@ -17,8 +16,8 @@ class MainCategoriesController extends Controller
      */
     public function index()
     {
-        // parent() هي سكوب موجود في الموديل بهدف تخفيف الكود وإعادة إستخدامه
-       $categories = Category::parent() ->orderBy('id', 'DESC') -> paginate(PAGINATION_COUNT);
+        // parent هي سكوب موجود في الموديل بهدف تخفيف الكود وإعادة إستخدامه
+       $categories = Category::with('_parent') ->orderBy('id', 'DESC') -> paginate(PAGINATION_COUNT);
         return view('dashboard.categories.index',compact('categories'));
 
     }
@@ -30,7 +29,8 @@ class MainCategoriesController extends Controller
      */
     public function create()
     {
-        return view('dashboard.categories.create');
+        $categories = Category::select('id','parent_id')->get();
+        return view('dashboard.categories.create',compact('categories'));
     }
 
     /**
@@ -44,25 +44,31 @@ class MainCategoriesController extends Controller
         try{
             DB::beginTransaction();
 
-            if(!$request->has('is_active'))
-                $request->request->add(['is_active' => 0]);
-            else
-                $request ->request->add(['is_active' => 1]);
+            (!$request->has('is_active')) 
+            ?  $request->request->add(['is_active' => 0])
+            :  $request ->request->add(['is_active' => 1]);
 
-            $category = Category::create([
-                'slug' => str_replace(' ','-',$request->name),
-                'is_active' => $request->is_active
-            ]);
+            if($request ->type == 1)
+            {
+                $request ->request->add(['parent_id' => null]);
+            }
+             $category = Category::create([
+                 'slug' => str_replace(' ','-',$request->name),
+                 'parent_id' => $request->parent_id,
+                 'is_active' => $request->is_active,
+             ]);
 
             // // لأن الأسم موجود في جدول الترجمة يتم إضافته هنا 
             $category ->name = $request->name;
+            $category->slug = 
+  
 
             $category ->save();
             DB::commit();
             return redirect()->route('admin.main_categories')->with(['success' => __('admin\dashboard.save')]);
 
         }catch(\Exception $ex){
-            
+            return $ex;
             DB::rollback();
             return redirect()->route('admin.main_categories')->with(['error' => __('admin\dashboard.error')]);
         }
@@ -138,18 +144,12 @@ class MainCategoriesController extends Controller
     public function destroy($id)
     {
         try{
-    
             $category = Category::find($id);
-
-            if(!$category)
-            
+            if(!$category)        
             //TODO:: Make Delete Confirmation with JS
-
                 return redirect()->route('admin.main_categories')->with(['error' => __('admin\dashboard.error')]);
-
             $category ->delete();
             return redirect()->route('admin.main_categories')->with(['success' => __('admin\dashboard.delete')]);
-
         }catch(\Exception $ex){
             return redirect()->route('admin.main_categories')->with(['error' => __('admin\dashboard.error')]);
         }
