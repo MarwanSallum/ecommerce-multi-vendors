@@ -58,15 +58,6 @@ Route::group([
                 Route::get('delete/{id}', 'MainCategoriesController@destroy')->name('admin.main_categories.delete');
             });
 
-               // Sub Category Route
-            Route::group(['prefix' => 'sub_categories'], function () {
-                Route::get('/', 'SubCategoriesController@index')->name('admin.sub_categories');
-                Route::get('create', 'SubCategoriesController@create')->name('admin.sub_categories.create');
-                Route::post('store', 'SubCategoriesController@store')->name('admin.sub_categories.store');
-                Route::get('edit/{id}', 'SubCategoriesController@edit')->name('admin.sub_categories.edit');
-                Route::post('update/{id}', 'SubCategoriesController@update')->name('admin.sub_categories.update');
-                Route::get('delete/{id}', 'SubCategoriesController@destroy')->name('admin.sub_categories.delete');
-            });
         });
         
     
