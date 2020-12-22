@@ -36,6 +36,10 @@ class Category extends Model
         return $this ->belongsTo(self::class, 'parent_id');
     }
 
+    public function _children(){
+        return $this ->hasMany(self::class, 'parent_id');
+    }
+
     public function getActive(){
        return $this -> is_active == 0 ? __('admin\dashboard.not_active') : __('admin\dashboard.active');
     }
