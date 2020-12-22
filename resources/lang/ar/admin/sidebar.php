@@ -14,6 +14,7 @@ return [
     'show_all_brands' =>'عرض جميع الماركات',
     'add_new_brand' => ' إضافة ماركة جديدة ',
 
+
     // Settings
     'settings' => 'الإعدادات',
     'shipping_methods' => 'وسائل التوصيل',

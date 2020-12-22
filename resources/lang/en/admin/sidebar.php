@@ -13,6 +13,7 @@ return [
     'show_all_brands' =>'Show All Brands',
     'add_new_brand' => 'Add New Brand',
 
+
     //Setting
     'settings' => 'Settings',
     'shipping_methods' => 'Shipping Methods',
