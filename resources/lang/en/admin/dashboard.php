@@ -28,6 +28,7 @@ return [
     // Table
 
     'name' => 'Name',
+    'category_name' => 'Category Name',
     'name_in_url' => 'Name in URL',
     'status' => 'Status',
     'category_image' =>'Category Image',
