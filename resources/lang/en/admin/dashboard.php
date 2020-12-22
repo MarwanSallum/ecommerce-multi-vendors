@@ -22,6 +22,8 @@ return [
     'botton_add' =>'Add',
     'botton_change_password' => 'Save New Password',
     'botton_back' => 'Back',
+    'upload_image' => 'Upload Image',
+    'choose_image' => 'Choose Image',
 
     // Table
 

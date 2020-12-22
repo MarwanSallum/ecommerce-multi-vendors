@@ -7,10 +7,26 @@ return [
     'show_all_categories' => 'Show All Categories',
     'add_new_category' => 'Add New Category',
 
+    // Brands
+
+    'brands' => 'Commercial Brands',
+    'show_all_brands' =>'Show All Brands',
+    'add_new_brand' => 'Add New Brand',
+
+    // Tags
+
+    'tags' => 'Tags',
+    'all_tags' => 'All Tags',
+    'add_new_tag' => 'Add New Tag',
+
+
+
     //Setting
     'settings' => 'Settings',
     'shipping_methods' => 'Shipping Methods',
     'free_shipping' => 'Free Shipping',
     'local_shipping' => 'Local Shipping',
     'outer_shipping' => 'Outer Shipping',
+
+
 ];

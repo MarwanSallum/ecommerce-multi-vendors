@@ -58,6 +58,7 @@ Route::group([
                 Route::get('delete/{id}', 'MainCategoriesController@destroy')->name('admin.main_categories.delete');
             });
 
+
         });
         
     
