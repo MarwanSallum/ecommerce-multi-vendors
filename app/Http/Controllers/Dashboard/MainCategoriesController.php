@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Enumerations\CategoryType;
 use App\Http\Requests\MainCategoryRequest;
 
 class MainCategoriesController extends Controller
@@ -29,7 +30,8 @@ class MainCategoriesController extends Controller
      */
     public function create()
     {
-        $categories = Category::select('id','parent_id')->get();
+        $categories = Category::select('id','parent_id')->with('_children')->get();
+
         return view('dashboard.categories.create',compact('categories'));
     }
 
@@ -48,7 +50,7 @@ class MainCategoriesController extends Controller
             ?  $request->request->add(['is_active' => 0])
             :  $request ->request->add(['is_active' => 1]);
 
-            if($request ->type == 1)
+            if($request ->type == CategoryType::mainCategory)
             {
                 $request ->request->add(['parent_id' => null]);
             }
