@@ -39,7 +39,7 @@ class SettingsController extends Controller
 
             $shippingMethod -> save();
             DB::commit();
-            return redirect()->back()->with(['success' => __('messages.success')]);
+            return redirect()->back()->with(['success' => __('messages.update')]);
         }catch(\Exception $ex){
             DB::rollback();
             return redirect()->back()->with(['error' =>  __('messages.error')]);

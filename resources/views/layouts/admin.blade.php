@@ -59,9 +59,10 @@
         body {
             font-family: 'Cairo', sans-serif;
         }
-        h3 {
+        h1, h2, h3, h4, h5, h6  {
             font-family: 'Cairo', sans-serif;
         }
+        
     </style>
 </head>
 <body class="vertical-layout vertical-menu 2-columns  menu-expanded fixed-navbar"
