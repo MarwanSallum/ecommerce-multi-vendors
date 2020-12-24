@@ -11,7 +11,7 @@
                         class="badge badge badge-danger badge-pill float-right mr-2">{{ \App\Models\Category::parent()->count() }}</span>
                 </a>
                 <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href="{{ route('admin.main_categories') }}"
+                    <li ><a class="menu-item" href="{{ route('admin.main_categories') }}"
                             data-i18n="nav.dash.ecommerce">{{ __('admin\sidebar.show_all_categories') }}</a>
                     </li>
                     <li><a class="menu-item" href="{{ route('admin.main_categories.create') }}"
@@ -27,7 +27,7 @@
                     <span class="badge badge badge-warning  badge-pill float-right mr-2"></span>
                 </a>
                 <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href="{{ route('admin.brands') }}"
+                    <li ><a class="menu-item" href="{{ route('admin.brands') }}"
                             data-i18n="nav.dash.ecommerce">{{ __('admin\sidebar.show_all_brands') }}</a>
                     </li>
                     <li><a class="menu-item" href="{{ route('admin.brand.create') }}"
@@ -44,12 +44,29 @@
                     <span class="badge badge badge-danger  badge-pill float-right mr-2">0</span>
                 </a>
                 <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href="{{ route('admin.tags') }}"
+                    <li ><a class="menu-item" href="{{ route('admin.tags') }}"
                             data-i18n="nav.dash.ecommerce">{{ __('admin\sidebar.all_tags') }}</a>
                     </li>
 
-                    <li class="active"><a class="menu-item" href="{{ route('admin.tags.create') }}"
+                    <li ><a class="menu-item" href="{{ route('admin.tags.create') }}"
                             data-i18n="nav.dash.ecommerce">{{ __('admin\sidebar.add_new_tag') }}</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{ route('admin.tags') }}"><i class="la la-male"></i>
+                    <span class="menu-title" data-i18n="nav.dash.main">المنتجات</span>
+
+                    <span class="badge badge badge-danger  badge-pill float-right mr-2">0</span>
+                </a>
+                <ul class="menu-content">
+                    <li ><a class="menu-item" href="{{ route('admin.tags') }}"
+                            data-i18n="nav.dash.ecommerce">عرض جميع المنتجات</a>
+                    </li>
+
+                    <li ><a class="menu-item" href="{{ route('admin.products.general.create') }}"
+                            data-i18n="nav.dash.ecommerce">إضافة منتج جديد</a>
                     </li>
                 </ul>
             </li>

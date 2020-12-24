@@ -77,6 +77,14 @@ Route::group([
                     Route::get('delete/{id}', 'TagController@destroy')->name('admin.tags.delete');
                 });
 
+                // Product Routes
+                Route::group(['prefix' => 'products'], function () {
+                    Route::get('/', 'ProductController@index')->name('admin.products');
+                    Route::get('general-information', 'ProductController@create')->name('admin.products.general.create');
+                    Route::post('store-general-information', 'ProductController@store')->name('admin.products.general.store');
+                
+                });
+
         });
         
     
