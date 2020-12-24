@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\GeneralProductRequest;
 use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -28,27 +29,6 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
-    public function createStepOne(){
-        $data = [];
-        $data['brands'] = Brand::active()->select('id') ->get(['name'])->makeHidden(['translations']);
-        $data['tags'] = Tag::select('id') ->get();
-        $data['categories'] = Category::active()->select('id') ->get();
-
-        return view('dashboard.products.general.create', $data);
-    }
-
-    public function createStepTwo(){
-
-    }
-
-    public function createStepThree(){
-
-    }
-
-    public function createStepFour(){
-
-    }
 
 
 
@@ -71,7 +51,37 @@ class ProductController extends Controller
      */
     public function store(GeneralProductRequest $request)
     {
-        return $request;
+        try{
+            DB::beginTransaction();
+            (!$request ->has('is_active')) 
+           ? $request->request ->add(['is_active' => 0])
+           : $request->request ->add(['is_active' => 0]);
+
+        $product = Product::create([
+            'slug' => str_replace(' ','-',$request->name),
+            'brand_id' => $request->brand_id,
+            'is_active' => $request->is_active,
+        ]);
+        
+        // Save Translations
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->short_description = $request->description;
+        $product->save();
+
+        // Save Product Categories
+        $product->categories()->attach($request->categories);
+
+            DB::commit();
+            return redirect()->route('admin.brands')->with(['success' => __('admin\dashboard.save')]);
+
+        }catch(\Exception $ex){
+
+            DB::rollBack();
+            return redirect()->route('admin.brands')->with(['error' => __('admin\dashboard.error')]);
+        }
+       
+            
     }
 
     /**
